@@ -1,9 +1,9 @@
 /*
- * Copyright 2018 OpenAPI-Generator Contributors (https://openapi-generator.tech)
- * Copyright 2018 SmartBear Software
+ * Copyright (c) 2020 OpenAPI-Generator Contributors (https://openapi-generator.tech)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
+ *
  * You may obtain a copy of the License at
  *
  *     https://www.apache.org/licenses/LICENSE-2.0
@@ -15,18 +15,16 @@
  * limitations under the License.
  */
 
-package sbtopenapigenerator
+package org.openapitools.generator.sbt.plugin
 
-import sbt._
-import sbt.{Def, ThisBuild}
-import sbt.Keys.{baseDirectory, aggregate, _}
+import org.openapitools.generator.sbt.plugin.tasks.{OpenApiGenerateTask, OpenApiGeneratorsTask}
+import sbt.Keys.aggregate
 import sbt.plugins.JvmPlugin
-import sbtopenapigenerator.tasks.{OpenApiGenerateTask, OpenApiGeneratorsTask}
+import sbt.{Def, File, config, taskKey}
 
 object OpenApiGeneratorPlugin extends sbt.AutoPlugin
   with OpenApiGeneratorsTask
-  with OpenApiGenerateTask
- {
+  with OpenApiGenerateTask {
   self =>
 
   override def requires: JvmPlugin.type = sbt.plugins.JvmPlugin
@@ -35,12 +33,14 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
 
   object autoImport extends OpenApiGeneratorKeys {
 
-      def SettingEnabled: Option[Boolean] = Some(true)
-      def SettingDisabled: Option[Boolean] = Some(false)
+    def SettingEnabled: Option[Boolean] = Some(true)
+
+    def SettingDisabled: Option[Boolean] = Some(false)
 
 
   }
-   val out = taskKey[Seq[File]]("Out")
+
+  val out = taskKey[Seq[File]]("Out")
 
   val OpenApiCodegen = config("openApiCodegen")
 

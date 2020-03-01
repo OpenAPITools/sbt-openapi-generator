@@ -1,5 +1,11 @@
 > openApiGenerators
 > openApiGenerate
 $ exists generated/build.sbt
+$ exists generated/.openapi-generator-ignore
+$ exists generated/.openapi-generator/VERSION
+$ exists generated/src/main/scala/org/openapitools/client/core/ApiInvoker.scala
+$ exists generated/src/main/scala/org/openapitools/client/model/ApiResponse.scala
+$ exists generated/src/main/scala/org/openapitools/client/model/Category.scala
+$ exists generated/src/main/scala/org/openapitools/client/api/PetApi.scala
 > reload
-> compile
+> test

@@ -1,9 +1,9 @@
 /*
- * Copyright 2018 OpenAPI-Generator Contributors (https://openapi-generator.tech)
- * Copyright 2018 SmartBear Software
+ * Copyright (c) 2020 OpenAPI-Generator Contributors (https://openapi-generator.tech)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
+ *
  * You may obtain a copy of the License at
  *
  *     https://www.apache.org/licenses/LICENSE-2.0
@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-package sbtopenapigenerator.tasks
+package org.openapitools.generator.sbt.plugin.tasks
 
-import org.openapitools.codegen.{CodegenConfigLoader, CodegenType}
 import org.openapitools.codegen.meta.Stability
+import org.openapitools.codegen.{CodegenConfigLoader, CodegenType}
 import sbt.{Def, Task}
-import scala.collection.JavaConverters._
 
+import scala.collection.JavaConverters._
 
 trait OpenApiGeneratorsTask {
 

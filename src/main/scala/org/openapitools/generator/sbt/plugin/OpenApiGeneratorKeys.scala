@@ -1,9 +1,9 @@
 /*
- * Copyright 2018 OpenAPI-Generator Contributors (https://openapi-generator.tech)
- * Copyright 2018 SmartBear Software
+ * Copyright (c) 2020 OpenAPI-Generator Contributors (https://openapi-generator.tech)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
+ *
  * You may obtain a copy of the License at
  *
  *     https://www.apache.org/licenses/LICENSE-2.0
@@ -15,12 +15,10 @@
  * limitations under the License.
  */
 
-package sbtopenapigenerator
+package org.openapitools.generator.sbt.plugin
 
 import org.openapitools.codegen.CodegenConstants
-import sbt.taskKey
-import sbt.settingKey
-import sbt.File
+import sbt.{File, settingKey, taskKey}
 
 trait OpenApiGeneratorKeys {
   final val openApiGenerate = taskKey[Seq[File]]("Generate code via Open API Tools Generator for Open API 2.0 or 3.x specification documents.")
