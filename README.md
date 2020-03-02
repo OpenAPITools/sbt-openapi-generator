@@ -1,6 +1,8 @@
-# sbt-openapi-generator
+# sbt-openapi-generator 
 
-A Sbt plugin to support the OpenAPI generator project
+![Scala CI](https://github.com/openAPITools/sbt-openapi-generator/workflows/Scala%20CI/badge.svg?branch=master)
+
+A Sbt plugin to support the OpenAPI generator project 
 
 # Usage
 
