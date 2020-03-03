@@ -1,6 +1,8 @@
-# sbt-openapi-generator
+# sbt-openapi-generator 
 
-A Sbt plugin to support the OpenAPI generator project
+![Scala CI](https://github.com/openAPITools/sbt-openapi-generator/workflows/Scala%20CI/badge.svg?branch=master)
+
+A Sbt plugin to support the OpenAPI generator project 
 
 # Usage
 
@@ -16,26 +18,23 @@ Configuration based on project module is recommended way to separate specificati
 
 You must define one of the settings `openApiInputSpec` or `openApiConfigFile` to able run plugin to generate.
 
-Settings will be picked up from `openApiConfigFile` first if defined and then will be overwritten with module specified settings
+Settings will be picked up from `openApiConfigFile` first if defined and then will be overwritten with module specified
+settings if provided
 
 With the next example module `generated` will be defined as:
 
 ```sbt
 lazy val generated = project.in(file("generated"))
   .settings(
-    inConfig(OpenApiCodegen) {
-      Seq(
-        openApiInputSpec := "openapi.yaml",
-        openApiConfigFile := "config.yaml"
-      )
-    }
+    openApiInputSpec := "openapi.yaml",
+    openApiConfigFile := "config.yaml"
   )
 ```
 
-There is a helpers to have boolean settings more readable. Instead of `Some(true)` you it possible to do next:
+There is a helpers to have boolean settings more readable. Instead of `Some(true)` it possible to do next:
 ```sbt
-        openApiValidateSpec := SettingDisabled,
-        openApiGenerateModelTests := SettingEnabled,
+    openApiValidateSpec := SettingDisabled,
+    openApiGenerateModelTests := SettingEnabled,
 ```
 # Execution 
 
@@ -58,10 +57,10 @@ sbt generated/openApiGenerate
 
 | Setting  | Type   | Description              | 
 |----------|--------|--------------------------|
-| openApiGeneratorName | `String` | The name of the generator which will handle codegen. (see \"openApiGenerators\" task) |
-| openApiInputSpec| `String` | The Open API 2.0/3.x specification location |
+| openApiGeneratorName *| `String` | The name of the generator which will handle codegen. (see \"openApiGenerators\" task)<br> Required. Can be provided as `generatorName` option of `openApiConfigFile` json config |
+| openApiInputSpec *| `String` | The Open API 2.0/3.x specification location (file or url)<br> Required. Can be provided as `inputSpec` option of `openApiConfigFile` json config |
 | openApiOutputDir| `String` | The output target directory into which code will be generated |
-| openApiConfigFile| `String` | Path to json configuration file |
+| openApiConfigFile **| `String` | Path to json configuration file<br> This setting is required with `generatorName` and `inputSpec` settings provided if sbt settings `openApiGeneratorName` and `openApiInputSpec` are absent |
 | openApiAdditionalProperties | `Map[String, String]` | Sets additional properties that can be referenced by the mustache templates in the format of name=value,name=value. You can also have multiple occurrences of this option |
 | openApiSystemProperties | `Map[String, String]` |Sets specified system properties |
 | openApiVerbose | `Option[Boolean]` | The verbosity of generation |
