@@ -17,19 +17,20 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     sbtPlugin := true,
     publishMavenStyle := false,
     bintrayRepository := "sbt-plugins",
-    bintrayOrganization in bintray := None,
-    bintrayPackageLabels := Seq("sbt", "plugin"),
+    bintrayOrganization in bintray := Option("openapitools"),
+    bintrayPackageLabels := Seq("sbt", "plugin", "oas", "openapi", "openapi-generator"),
     bintrayVcsUrl := Some("git@github.com:OpenAPITools/sbt-openapi-generator.git"),
     git.baseVersion := openApiGeneratorVersion.replace("-SNAPSHOT", ""),
     git.formattedShaVersion := {
-      git.gitHeadCommit.value map { sha =>
-        git.defaultFormatShaVersion(
-          Some(git.formattedDateVersion.value),
-          sha.slice(0, 8),
-          git.makeUncommittedSignifierSuffix(
-            git.gitUncommittedChanges.value,
-            git.uncommittedSignifier.value))
-      }
+      if(isSnapshot.value) {
+        git.gitHeadCommit.value map { sha =>
+          git.defaultFormatShaVersion(
+            Some(git.formattedDateVersion.value),
+            sha.slice(0, 8),
+            ""
+          )
+        }
+      } else Option(openApiGeneratorVersion)
     },
 
     scriptedLaunchOpts := {
@@ -64,6 +65,8 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         connection = "scm:git:git://github.com/OpenAPITools/openapi-generator.git",
         devConnection = "scm:git:ssh://git@github.com:OpenAPITools/openapi-generator.git")
     ),
+
+    isSnapshot := openApiGeneratorVersion.endsWith("-SNAPSHOT"),
 
     libraryDependencies += "org.openapitools" % "openapi-generator" % openApiGeneratorVersion
   ).enablePlugins(GitVersioning, SbtPlugin)
