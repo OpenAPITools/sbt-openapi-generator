@@ -1,6 +1,18 @@
 name: Scala CI
 
-on: [push, pull_request]
+# Support "official releases" on master, and release fixes on release/ prefixed branches
+on:
+  push:
+    branches:
+      - 'master'
+      - 'releases/**'
+      - '!releases/**-alpha'
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+  pull_request:
+    branches:
+      - 'master'
 
 jobs:
   build:
