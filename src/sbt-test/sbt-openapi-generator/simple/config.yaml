@@ -1,3 +1,5 @@
 apiPackage: "petstore"
 generatorName: "scala-akka"
 outputDir : "generated"
+additionalProperties:
+  dateLibrary: "joda"
