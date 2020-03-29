@@ -1,8 +1,9 @@
 scalaVersion := "2.12.10"
 
-enablePlugins(OpenApiGeneratorPlugin)
+externalResolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val generated = project.in(file("generated"))
+  .enablePlugins(OpenApiGeneratorPlugin)
   .settings(
     openApiInputSpec := "openapi.yaml",
     openApiConfigFile := "config.yaml",
