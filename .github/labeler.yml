@@ -1,0 +1,44 @@
+# labeler "full" schema
+# see https://github.com/marketplace/actions/auto-labeler
+# enable labeler on issues, prs, or both.
+enable:
+  issues: true
+  prs: true
+
+# comments object allows you to specify a different message for issues and prs
+comments:
+  issues: |
+    Thanks for opening this issue!
+    We've automatically applied any labels matching text in your issue.
+  prs: |
+    Thanks for the contribution!
+    We've automatically applied labels that seem to represent your pull request.
+
+# Labels is an object where:
+# - keys are labels
+# - values are objects of { include: [ pattern ], exclude: [ pattern ] }
+#    - pattern must be a valid regex, and is applied globally to
+#      title + description of issues and/or prs (see enabled config above)
+#    - 'include' patterns will associate a label if any of these patterns match
+#    - 'exclude' patterns will ignore this label if any of these patterns match
+labels:
+  'bug':
+    include:
+      - '\s*?\[bug(s)?\]\b'
+      - '\s*?\[fix\]\b'
+    exclude: []
+  'help wanted':
+    include:
+      - '\bhelp wanted\b'
+    exclude:
+      - '\bquestion\b'
+      - '\bhelp( me)?\b'
+  'question':
+    include:
+      - '\bhelp( me)?\b'
+      - '\b\[question\]\b'
+  'enhancement':
+    include:
+      - '\bfeat\b'
+      - '\bfeature\b'
+    exclude: []
