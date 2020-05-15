@@ -1,4 +1,4 @@
-apiPackage: "petstore"
+apiPackage: "org.openapitools.client.custom.api"
 generatorName: "scala-akka"
 outputDir : "generated"
 additionalProperties:

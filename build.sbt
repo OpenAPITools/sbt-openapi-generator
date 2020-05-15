@@ -34,7 +34,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     },
 
     scriptedLaunchOpts := {
-      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
     },
 
     scriptedBufferLog := false,
