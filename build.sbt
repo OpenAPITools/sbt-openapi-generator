@@ -1,4 +1,4 @@
-val openApiGeneratorVersion = "4.3.1"
+val openApiGeneratorVersion = "5.0.0-SNAPSHOT"
 
 ThisBuild / name := "sbt-openapi-generator"
 ThisBuild / description :=
