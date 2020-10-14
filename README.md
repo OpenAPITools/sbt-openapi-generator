@@ -62,7 +62,7 @@ sbt generated/openApiGenerate
 | openApiOutputDir| `String` | The output target directory into which code will be generated |
 | openApiConfigFile **| `String` | Path to json configuration file<br> This setting is required with `generatorName` and `inputSpec` settings provided if sbt settings `openApiGeneratorName` and `openApiInputSpec` are absent |
 | openApiAdditionalProperties | `Map[String, String]` | Sets additional properties that can be referenced by the mustache templates in the format of name=value,name=value. You can also have multiple occurrences of this option |
-| openApiSystemProperties | `Map[String, String]` |Sets specified system properties |
+| openApiGlobalProperties | `Map[String, String]` |Sets specified system properties |
 | openApiVerbose | `Option[Boolean]` | The verbosity of generation |
 | openApiValidateSpec | `Option[Boolean]` | Whether or not an input specification should be validated upon generation |
 | openApiTemplateDir | `String` | The template directory holding a custom template |

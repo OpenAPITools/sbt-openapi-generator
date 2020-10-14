@@ -196,9 +196,9 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
         configurator.setGenerateAliasAsModel(value)
       }
 
-      if (openApiSystemProperties.value.nonEmpty) {
-        openApiSystemProperties.value.foreach { entry =>
-          configurator.addSystemProperty(entry._1, entry._2)
+      if (openApiGlobalProperties.value.nonEmpty || openApiSystemProperties.value.nonEmpty) {
+        (openApiSystemProperties.value ++ openApiGlobalProperties.value).foreach { entry =>
+          configurator.addGlobalProperty(entry._1, entry._2)
         }
       }
 
@@ -258,7 +258,7 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
               throw new Exception("Code generation failed.", ex)
           }
         case Failure(ex) =>
-          logger.info(ex.getMessage)
+          logger.err(ex.getMessage)
           Seq.empty
       }
     }
