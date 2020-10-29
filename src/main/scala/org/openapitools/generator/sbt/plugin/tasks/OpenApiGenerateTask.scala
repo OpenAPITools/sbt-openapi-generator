@@ -198,7 +198,7 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
 
       if (openApiSystemProperties.value.nonEmpty) {
         openApiSystemProperties.value.foreach { entry =>
-          configurator.addSystemProperty(entry._1, entry._2)
+          configurator.addGlobalProperty(entry._1, entry._2)
         }
       }
 
