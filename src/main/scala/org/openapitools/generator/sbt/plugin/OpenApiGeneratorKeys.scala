@@ -31,7 +31,8 @@ trait OpenApiGeneratorKeys {
     "Supported options can be different for each language. Run config-help -g {generator name} command for language specific config options.")
   final val openApiAdditionalProperties = settingKey[Map[String, String]]("Sets additional properties that can be referenced by the mustache templates in the format of name=value,name=value.\n" +
     "You can also have multiple occurrences of this option.")
-  final val openApiSystemProperties = settingKey[Map[String, String]]("Sets specified system properties.")
+  @deprecated("use openApiGlobalProperties instead") final val openApiSystemProperties = settingKey[Map[String, String]]("Sets specified system properties.")
+  final val openApiGlobalProperties = settingKey[Map[String, String]]("Sets specified system properties.")
 
   final val openApiVerbose = settingKey[Option[Boolean]]("The verbosity of generation")
   final val openApiValidateSpec = settingKey[Option[Boolean]]("Whether or not an input specification should be validated upon generation.")

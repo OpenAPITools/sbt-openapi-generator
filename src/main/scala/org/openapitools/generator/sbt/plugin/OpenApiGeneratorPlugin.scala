@@ -54,6 +54,7 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
     openApiConfigFile := "",
     openApiAdditionalProperties := Map.empty[String, String],
     openApiSystemProperties := Map.empty[String, String],
+    openApiGlobalProperties := Map.empty[String, String],
     openApiVerbose := None,
     openApiValidateSpec := None,
     openApiGeneratorName := "",
