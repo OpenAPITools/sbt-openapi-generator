@@ -2,8 +2,6 @@ scalaVersion := "2.12.10"
 
 externalResolvers += Resolver.sonatypeRepo("snapshots")
 
-Global / onChangedBuildSource := IgnoreSourceChanges
-
 lazy val generated = project.in(file("generated"))
   .enablePlugins(OpenApiGeneratorPlugin)
   .settings(

@@ -54,6 +54,7 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
     openApiConfigFile := "",
     openApiAdditionalProperties := Map.empty[String, String],
     openApiSystemProperties := Map.empty[String, String],
+    openApiGlobalProperties := Map.empty[String, String],
     openApiVerbose := None,
     openApiValidateSpec := None,
     openApiGeneratorName := "",
@@ -93,12 +94,12 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
     openApiLogToStderr := None,
     openApiEnablePostProcessFile := None,
     openApiSkipValidateSpec := None,
-    openApiGenerateAliasAsModel := None,
+    openApiGenerateAliasAsModel := None
   )
 
   override lazy val projectSettings: Seq[Def.Setting[_]] = Seq[sbt.Setting[_]](
     openApiGenerators := openApiGeneratorsTask.value,
-    openApiGenerate := openApiGenerateTask.value,
+    openApiGenerate := openApiGenerateTask.value
   ) ++ baseSettings
 
 }

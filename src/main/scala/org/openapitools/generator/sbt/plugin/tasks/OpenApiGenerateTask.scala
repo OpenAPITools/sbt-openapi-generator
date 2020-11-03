@@ -196,8 +196,8 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
         configurator.setGenerateAliasAsModel(value)
       }
 
-      if (openApiSystemProperties.value.nonEmpty) {
-        openApiSystemProperties.value.foreach { entry =>
+      if (openApiGlobalProperties.value.nonEmpty || openApiSystemProperties.value.nonEmpty) {
+        (openApiSystemProperties.value ++ openApiGlobalProperties.value).foreach { entry =>
           configurator.addGlobalProperty(entry._1, entry._2)
         }
       }
@@ -250,7 +250,7 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
             val gen = new DefaultGenerator().opts(clientOptInput)
             val res = gen.generate().asScala
 
-            logger.out(s"Successfully generated code to ${clientOptInput.getConfig.getOutputDir}")
+            logger.info(s"Successfully generated code to ${clientOptInput.getConfig.getOutputDir}")
             res
           } match {
             case Success(value) => value
@@ -258,7 +258,7 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
               throw new Exception("Code generation failed.", ex)
           }
         case Failure(ex) =>
-          logger.info(ex.getMessage)
+          logger.error(ex.getMessage)
           Seq.empty
       }
     }
