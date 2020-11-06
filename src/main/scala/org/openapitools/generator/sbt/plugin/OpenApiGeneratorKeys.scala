@@ -161,4 +161,11 @@ trait OpenApiGeneratorKeys {
    */
   final val openApiGenerateAliasAsModel = settingKey[Option[Boolean]](CodegenConstants.GENERATE_ALIAS_AS_MODEL_DESC)
 
+  /**
+   * Indicate whether or not to generate OpenAPI Generator metadata files.
+   * These files include .openapi-generator/VERSION, .openapi-generator-ignore, and any other metadata files
+   * used by OpenAPI Generator.
+   */
+  final val openApiGenerateMetadata = settingKey[Option[Boolean]]("Generate metadata files used by OpenAPI Generator. This includes .openapi-generator-ignore and any files within .openapi-generator.")
+
 }

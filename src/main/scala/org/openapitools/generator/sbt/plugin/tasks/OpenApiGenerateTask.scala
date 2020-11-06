@@ -247,7 +247,14 @@ trait OpenApiGenerateTask extends OpenApiGeneratorKeys {
       Try(configurator.toClientOptInput) match {
         case Success(clientOptInput) =>
           Try {
-            val gen = new DefaultGenerator().opts(clientOptInput)
+            val gen = new DefaultGenerator()
+
+            gen.opts(clientOptInput)
+
+            openApiGenerateMetadata.value.foreach { value =>
+              gen.setGenerateMetadata(value)
+            }
+
             val res = gen.generate().asScala
 
             logger.info(s"Successfully generated code to ${clientOptInput.getConfig.getOutputDir}")

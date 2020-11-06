@@ -102,10 +102,11 @@ sbt generated/openApiGenerate
 | openApiEnablePostProcessFile | `Option[Boolean]` | Enable post-processing file using environment variables | \
 | openApiSkipValidateSpec | `Option[Boolean]` | To skip spec validation. When true, we will skip the default behavior of validating a spec before generation |
 | openApiGenerateAliasAsModel | `Option[Boolean]` | Generate model implementation for aliases to map and array schemas |
+| openApiGenerateMetadata | `Option[Boolean]` | Generate metadata files used by OpenAPI Generator. This includes `.openapi-generator-ignore` and any files within `.openapi-generator`. |
 
 # Examples
 
-Please see [an sbt-test configuration](src/sbt-test) for using the plugin. 
+Please see [an sbt-test configuration](src/sbt-test) for examples of using the plugin.
 Do not run those examples directly, please copy them to separate place first.
 
 # Contribution and Tests
