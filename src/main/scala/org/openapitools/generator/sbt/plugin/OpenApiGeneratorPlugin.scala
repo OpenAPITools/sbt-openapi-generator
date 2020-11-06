@@ -94,7 +94,8 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
     openApiLogToStderr := None,
     openApiEnablePostProcessFile := None,
     openApiSkipValidateSpec := None,
-    openApiGenerateAliasAsModel := None
+    openApiGenerateAliasAsModel := None,
+    openApiGenerateMetadata := None
   )
 
   override lazy val projectSettings: Seq[Def.Setting[_]] = Seq[sbt.Setting[_]](
