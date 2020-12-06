@@ -1,0 +1,11 @@
+> openApiGenerators
+> openApiGenerate
+> reload
+$ exists api/build.sbt
+$ exists api/.openapi-generator-ignore
+$ exists api/.openapi-generator/VERSION
+$ exists api/src/main/scala/org/openapitools/client/api/PetApi.scala
+$ exists api/src/main/scala/org/openapitools/client/core/DateSerializers.scala
+$ exists api/src/main/scala/org/openapitools/client/model/ApiResponse.scala
+> check
+> test
