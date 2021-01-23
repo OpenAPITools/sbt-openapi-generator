@@ -13,9 +13,8 @@ on:
   pull_request:
     branches:
       - 'master'
-  release:
-    types:
-      - 'published'
+  # trigger on new branch/tag creation
+  create: []
 
 jobs:
   build:
