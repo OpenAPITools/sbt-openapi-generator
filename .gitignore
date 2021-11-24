@@ -1,3 +1,4 @@
+.bsp
 
 # Created by https://www.gitignore.io/api/osx,sbt,linux,scala,intellij
 # Edit at https://www.gitignore.io/?templates=osx,sbt,linux,scala,intellij
@@ -153,4 +154,3 @@ project/plugins/project/
 *.metals
 
 # End of https://www.gitignore.io/api/osx,sbt,linux,scala,intellij
-
