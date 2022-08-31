@@ -1,48 +1,29 @@
 name: Scala CI
 
-# Support "official releases" on master, and release fixes on release/ prefixed branches
 on:
   push:
     branches:
       - 'master'
-      - 'releases/**'
-      - '!releases/**-alpha'
     paths-ignore:
       - 'docs/**'
       - 'README.md'
   pull_request:
     branches:
       - 'master'
-  # trigger on new branch/tag creation
-  create: []
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Set up JDK
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: 8
           distribution: temurin
-      - name: Cache SBT ivy cache
-        uses: actions/cache@v1
-        with:
-          path: ~/.ivy2/cache
-          key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/*.sbt') }}
-      - name: Cache SBT
-        uses: actions/cache@v1
-        with:
-          path: ~/.sbt
-          key: ${{ runner.os }}-sbt-${{ hashFiles('**/*.sbt') }}
+          cache: 'sbt'
+
       - name: Run tests
-        run: sbt ^test ^scripted
-      - name: Publish
-        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v')
-        env:
-          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
-          BINTRAY_PASS: ${{ secrets.BINTRAY_PASS }}
-        run: sbt ^publish
+        run: sbt ^scripted

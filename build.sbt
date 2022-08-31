@@ -10,16 +10,8 @@ specifications as part of your build. Other tasks are available as command line 
 lazy val `sbt-openapi-generator` = (project in file("."))
   .settings(
     scalaVersion := "2.12.15",
-    crossScalaVersions := Seq(scalaVersion.value, "2.11.12"),
     crossSbtVersions := List("0.13.17", "1.3.10"),
     sbtPlugin := true,
-
-    publishMavenStyle := false,
-
-    bintrayRepository := "sbt-plugins",
-    bintrayOrganization := Option("openapitools"),
-    bintrayPackageLabels := Seq("sbt", "plugin", "oas", "openapi", "openapi-generator"),
-    bintrayVcsUrl := Some("git@github.com:OpenAPITools/sbt-openapi-generator.git"),
 
     scriptedLaunchOpts := {
       scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
@@ -27,10 +19,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
 
     scriptedBufferLog := false,
 
-    resolvers ++= Seq(
-      Resolver.sbtPluginRepo("snapshots"),
-      Resolver.sonatypeRepo("snapshots")
-    ),
+    resolvers ++= Resolver.sonatypeOssRepos("snapshots"),
 
     homepage := Some(url("https://openapi-generator.tech")),
 
