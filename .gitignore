@@ -154,3 +154,7 @@ project/plugins/project/
 *.metals
 
 # End of https://www.gitignore.io/api/osx,sbt,linux,scala,intellij
+
+.vscode
+metals.sbt
+.bloop
