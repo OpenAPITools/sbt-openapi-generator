@@ -14,12 +14,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     crossSbtVersions := List("0.13.17", "1.3.10"),
     sbtPlugin := true,
 
-    publishMavenStyle := false,
-
-    bintrayRepository := "sbt-plugins",
-    bintrayOrganization := Option("openapitools"),
-    bintrayPackageLabels := Seq("sbt", "plugin", "oas", "openapi", "openapi-generator"),
-    bintrayVcsUrl := Some("git@github.com:OpenAPITools/sbt-openapi-generator.git"),
+    publishMavenStyle := true,
 
     scriptedLaunchOpts := {
       scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
@@ -31,6 +26,8 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       Resolver.sbtPluginRepo("snapshots"),
       Resolver.sonatypeRepo("snapshots")
     ),
+
+    version := "7.3.0",
 
     homepage := Some(url("https://openapi-generator.tech")),
 
