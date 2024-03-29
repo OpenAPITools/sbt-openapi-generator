@@ -40,9 +40,9 @@ jobs:
           key: ${{ runner.os }}-sbt-${{ hashFiles('**/*.sbt') }}
       - name: Run tests
         run: sbt ^test ^scripted
-      - name: Publish
-        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v')
-        env:
-          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
-          BINTRAY_PASS: ${{ secrets.BINTRAY_PASS }}
-        run: sbt ^publish
+      #- name: Publish
+      #  if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v')
+      #  env:
+      #    BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+      #    BINTRAY_PASS: ${{ secrets.BINTRAY_PASS }}
+      #  run: sbt ^publish
