@@ -27,7 +27,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       Resolver.sonatypeRepo("snapshots")
     ),
 
-    version := "7.6.0",
+    version := "7.7.0",
 
     homepage := Some(url("https://openapi-generator.tech")),
 
