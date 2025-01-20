@@ -28,6 +28,8 @@ jobs:
         with:
           java-version: 11
           distribution: temurin
+      - name: Setup sbt launcher
+        uses: sbt/setup-sbt@v1
       - name: Cache SBT ivy cache
         uses: actions/cache@v1
         with:
