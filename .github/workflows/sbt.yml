@@ -36,7 +36,7 @@ jobs:
           path: ~/.ivy2/cache
           key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/*.sbt') }}
       - name: Cache SBT
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.sbt
           key: ${{ runner.os }}-sbt-${{ hashFiles('**/*.sbt') }}
