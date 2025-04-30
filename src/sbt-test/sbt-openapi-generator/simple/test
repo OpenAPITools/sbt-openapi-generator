@@ -8,4 +8,3 @@ $ exists generated/src/main/scala/org/openapitools/client/core/ApiInvoker.scala
 $ exists generated/src/main/scala/org/openapitools/client/model/ApiResponse.scala
 $ exists generated/src/main/scala/org/openapitools/client/model/Category.scala
 $ exists generated/src/main/scala/org/openapitools/client/custom/api/PetApi.scala
-> test
