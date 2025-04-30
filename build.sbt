@@ -27,7 +27,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       Resolver.sonatypeRepo("snapshots")
     ),
 
-    version := "7.12.0",
+    version := "7.13.0",
 
     homepage := Some(url("https://openapi-generator.tech")),
 
@@ -51,5 +51,5 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         devConnection = "scm:git:ssh://git@github.com:OpenAPITools/openapi-generator.git")
     ),
 
-    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.11.0"
+    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.13.0"
   ).enablePlugins(SbtPlugin)
