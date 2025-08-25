@@ -7,8 +7,8 @@ This gives you the ability to generate client SDKs, documentation, new generator
 specifications as part of your build. Other tasks are available as command line tasks.
 """
 
-lazy val scala212 = "2.12.20"
-lazy val scala211 = "2.12.19"
+lazy val scala21220 = "2.12.20"
+lazy val scala21219 = "2.13.16"
 
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
 //crossScalaVersions := Nil
@@ -35,7 +35,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       )
     ),
     moduleName := "sbt-openapi-generator",
-    crossScalaVersions := Seq(scala212, scala211),
+    crossScalaVersions := Seq(scala21220, scala21119),
     crossSbtVersions := List("1.11.4"),
     sbtPlugin := true,
     scalacOptions ++= {
