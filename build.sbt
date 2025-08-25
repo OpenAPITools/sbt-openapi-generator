@@ -11,7 +11,7 @@ lazy val scala212 = "2.12.20"
 lazy val scala3 = "3.7.2"
 
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
-crossScalaVersions := Nil
+//crossScalaVersions := Nil
 //publish / skip := true // don't publish the root project
 
 lazy val `sbt-openapi-generator` = (project in file("."))
