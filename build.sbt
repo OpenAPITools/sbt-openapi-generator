@@ -35,7 +35,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       )
     ),
     moduleName := "sbt-openapi-generator",
-    crossScalaVersions := Seq(scala21220, scala21119),
+    crossScalaVersions := Seq(scala21220, scala21219),
     crossSbtVersions := List("1.11.4"),
     sbtPlugin := true,
     scalacOptions ++= {
