@@ -10,8 +10,7 @@ specifications as part of your build. Other tasks are available as command line 
 lazy val `sbt-openapi-generator` = (project in file("."))
   .settings(
     scalaVersion := "2.12.20",
-    crossScalaVersions := Seq(scalaVersion.value, "2.13.16"),
-    crossSbtVersions := List("1.11.5"),
+    sbtVersions := "1.11.5",
     sbtPlugin := true,
 
     inThisBuild(List(
