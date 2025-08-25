@@ -20,6 +20,15 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     moduleName := "sbt-openapi-generator",
     crossScalaVersions := Seq(scala212, scala3),
     sbtPlugin := true,
+    scriptedLaunchOpts := {
+      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
+    },
+
+    scriptedBufferLog := false,
+
+    resolvers ++= Seq(
+      Resolver.sbtPluginRepo("snapshots"),
+    ),
 
     inThisBuild(
       List(
