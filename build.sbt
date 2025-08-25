@@ -12,7 +12,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     moduleName := "sbt-openapi-generator",
     scalaVersion := "2.12.20",
     crossScalaVersions := Seq(scalaVersion.value, "2.11.12"),
-    crossSbtVersions := List("1.11.4"),
+    crossSbtVersions := List("1.11.4", "0.13.17"),
     sbtPlugin := true,
 
     inThisBuild(List(
@@ -41,6 +41,9 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     resolvers ++= Seq(
       Resolver.sbtPluginRepo("snapshots"),
     ),
+
+    resolvers += Resolver.url("bintray-sbt-plugins", url("http://dl.bintray.com/sbt/sbt-plugin-releases"))(Resolver.ivyStylePatterns)
+
 
     //version := "7.14.0",
 
