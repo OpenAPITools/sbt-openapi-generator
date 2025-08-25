@@ -15,21 +15,7 @@ crossScalaVersions := Nil
 //publish / skip := true // don't publish the root project
 
 lazy val `sbt-openapi-generator` = (project in file("."))
-  .enablePlugins(SbtPlugin)
   .settings(
-    moduleName := "sbt-openapi-generator",
-    crossScalaVersions := Seq(scala212, scala3),
-    sbtPlugin := true,
-    scriptedLaunchOpts := {
-      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
-    },
-
-    scriptedBufferLog := false,
-
-    resolvers ++= Seq(
-      Resolver.sbtPluginRepo("snapshots"),
-    ),
-
     inThisBuild(
       List(
         homepage := Some(url("https://openapi-generator.tech")),
@@ -48,6 +34,21 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         )
       )
     ),
+    moduleName := "sbt-openapi-generator",
+    crossScalaVersions := Seq(scala212, scala3),
+    crossSbtVersions := List("1.11.4"),
+    sbtPlugin := true,
+    scriptedLaunchOpts := {
+      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
+    },
+
+    scriptedBufferLog := false,
+
+    resolvers ++= Seq(
+      Resolver.sbtPluginRepo("snapshots"),
+    ),
+
+
     libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0",
     addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.11.2")
-  )
+  ).enablePlugins(SbtPlugin)
