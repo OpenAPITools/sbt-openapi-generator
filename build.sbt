@@ -29,14 +29,16 @@ crossScalaVersions := Nil
 lazy val `sbt-openapi-generator` = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
-    crossScalaVersions := Seq("2.12.20", "3.7.2"),
+    moduleName := "sbt-openapi-generator",
+    crossScalaVersions := Seq("2.12.20"),
     sbtPlugin := true,
-    (pluginCrossBuild / sbtVersion) := {
-      scalaBinaryVersion.value match {
-        case "2.12" => "1.11.4"
-        case _      => "2.0.0-RC3"
-      }
-    },
+    //crossScalaVersions := Seq("2.12.20", "3.7.2"),
+    //(pluginCrossBuild / sbtVersion) := {
+    //  scalaBinaryVersion.value match {
+    //    case "2.12" => "1.11.4"
+    //    case _      => "2.0.0-RC3"
+    //  }
+    //},
 
     resolvers ++= Seq(
       Resolver.sbtPluginRepo("snapshots"),
