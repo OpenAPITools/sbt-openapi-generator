@@ -7,12 +7,7 @@ This gives you the ability to generate client SDKs, documentation, new generator
 specifications as part of your build. Other tasks are available as command line tasks.
 """
 
-lazy val `sbt-openapi-generator` = (project in file("."))
-  .enablePlugins(SbtPlugin)
-  .settings(
-    scalaVersion := "2.12.20",
-    crossScalaVersions := Seq(scalaVersion.value, "3.7.2"),
-    inThisBuild(List(
+inThisBuild(List(
       homepage := Some(url("https://openapi-generator.tech")),
 
       organization := "org.openapitools",
@@ -27,8 +22,14 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         email = "team@openapitools.org",
         url = url("https://github.com/OpenAPITools")
       )
-    )),
+))
 
+crossScalaVersions := Nil
+
+lazy val `sbt-openapi-generator` = (project in file("."))
+  .enablePlugins(SbtPlugin)
+  .settings(
+    crossScalaVersions := Seq("2.12.20", "3.7.2"),
     sbtPlugin := true,
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
@@ -42,7 +43,6 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     ),
 
     //version := "7.14.0",
-
 
     scmInfo := Some(
       ScmInfo(
