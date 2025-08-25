@@ -8,7 +8,7 @@ specifications as part of your build. Other tasks are available as command line 
 """
 
 lazy val scala212 = "2.12.20"
-lazy val scala211 = "2.11.12"
+lazy val scala211 = "2.12.19"
 
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
 //crossScalaVersions := Nil
