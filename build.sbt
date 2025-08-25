@@ -7,14 +7,7 @@ This gives you the ability to generate client SDKs, documentation, new generator
 specifications as part of your build. Other tasks are available as command line tasks.
 """
 
-lazy val `sbt-openapi-generator` = (project in file("."))
-  .settings(
-    scalaVersion := "2.12.20",
-    crossScalaVersions := Seq(scalaVersion.value),
-    crossSbtVersions := List("1.11.4"),
-    sbtPlugin := true,
-
-    inThisBuild(List(
+inThisBuild(List(
       homepage := Some(url("https://openapi-generator.tech")),
 
       organization := "org.openapitools",
@@ -29,20 +22,29 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         email = "team@openapitools.org",
         url = url("https://github.com/OpenAPITools")
       )
-    )),
+))
 
-    scriptedLaunchOpts := {
-      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
-    },
+crossScalaVersions := Nil
 
-    scriptedBufferLog := false,
+lazy val `sbt-openapi-generator` = (project in file("."))
+  .enablePlugins(SbtPlugin)
+  .settings(
+    moduleName := "sbt-openapi-generator",
+    crossScalaVersions := Seq("2.12.20"),
+    sbtPlugin := true,
+    //crossScalaVersions := Seq("2.12.20", "3.7.2"),
+    //(pluginCrossBuild / sbtVersion) := {
+    //  scalaBinaryVersion.value match {
+    //    case "2.12" => "1.11.4"
+    //    case _      => "2.0.0-RC3"
+    //  }
+    //},
 
     resolvers ++= Seq(
       Resolver.sbtPluginRepo("snapshots"),
     ),
 
     //version := "7.14.0",
-
 
     scmInfo := Some(
       ScmInfo(
@@ -52,4 +54,4 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     ),
 
     libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0"
-  ).enablePlugins(SbtPlugin)
+  )
