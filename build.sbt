@@ -10,25 +10,6 @@ specifications as part of your build. Other tasks are available as command line 
 lazy val scala212 = "2.12.20"
 lazy val scala3 = "3.7.2"
 
-inThisBuild(
-  List(
-    homepage := Some(url("https://openapi-generator.tech")),
-
-    organization := "org.openapitools",
-    organizationName := "OpenAPI-Generator Contributors",
-    organizationHomepage := Some(url("https://github.com/OpenAPITools")),
-
-    licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
-
-    developers += Developer(
-      id = "openapitools",
-      name = "OpenAPI-Generator Contributors",
-      email = "team@openapitools.org",
-      url = url("https://github.com/OpenAPITools")
-    )
-  )
-)
-
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
 crossScalaVersions := Nil
 //publish / skip := true // don't publish the root project
@@ -39,7 +20,25 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     moduleName := "sbt-openapi-generator",
     crossScalaVersions := Seq(scala212, scala3),
     sbtPlugin := true,
-    
+
+    inThisBuild(
+      List(
+        homepage := Some(url("https://openapi-generator.tech")),
+
+        organization := "org.openapitools",
+        organizationName := "OpenAPI-Generator Contributors",
+        organizationHomepage := Some(url("https://github.com/OpenAPITools")),
+
+        licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
+
+        developers += Developer(
+          id = "openapitools",
+          name = "OpenAPI-Generator Contributors",
+          email = "team@openapitools.org",
+          url = url("https://github.com/OpenAPITools")
+        )
+      )
+    ),
     libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0",
     addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.11.2")
   )
