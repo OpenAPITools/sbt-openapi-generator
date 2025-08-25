@@ -39,7 +39,6 @@ lazy val `sbt-openapi-generator` = (project in file("."))
 
     resolvers ++= Seq(
       Resolver.sbtPluginRepo("snapshots"),
-      Resolver.sonatypeRepo("snapshots")
     ),
 
     //version := "7.14.0",
