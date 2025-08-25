@@ -44,11 +44,11 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
 
   val OpenApiCodegen = config("openApiCodegen")
 
-  override def globalSettings: Seq[Def.Setting[_]] = Seq(
+  override def globalSettings: Seq[Def.Setting[?]] = Seq(
     aggregate in openApiGenerators := false
   )
 
-  private lazy val baseSettings: Seq[sbt.Setting[_]] = Seq[sbt.Setting[_]](
+  private lazy val baseSettings: Seq[sbt.Setting[?]] = Seq[sbt.Setting[?]](
     openApiInputSpec := "",
     openApiOutputDir := "",
     openApiConfigFile := "",
@@ -98,7 +98,7 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
     openApiGenerateMetadata := None
   )
 
-  override lazy val projectSettings: Seq[Def.Setting[_]] = Seq[sbt.Setting[_]](
+  override lazy val projectSettings: Seq[Def.Setting[?]] = Seq[sbt.Setting[?]](
     openApiGenerators := openApiGeneratorsTask.value,
     openApiGenerate := openApiGenerateTask.value
   ) ++ baseSettings
