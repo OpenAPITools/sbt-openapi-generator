@@ -29,7 +29,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         email = "team@openapitools.org",
         url = url("https://github.com/OpenAPITools")
       )
-    ),
+    )),
 
     scriptedLaunchOpts := {
       scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
