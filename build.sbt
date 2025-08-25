@@ -38,6 +38,7 @@ lazy val plugin = (project in file("."))
   .settings(
     moduleName := "sbt-openapi-generator",
     crossScalaVersions := Seq(scala212, scala3),
+    sbtPlugin := true,
     scalacOptions ++= {
       scalaBinaryVersion.value match {
         case "2.12" => "-Xsource:3" :: Nil
