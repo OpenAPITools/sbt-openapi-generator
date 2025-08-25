@@ -8,18 +8,10 @@ specifications as part of your build. Other tasks are available as command line 
 """
 
 lazy val `sbt-openapi-generator` = (project in file("."))
+  .enablePlugins(SbtPlugin)
   .settings(
     scalaVersion := "2.12.20",
     crossScalaVersions := Seq(scalaVersion.value, "3.7.2"),
-
-    sbtPlugin := true,
-    (pluginCrossBuild / sbtVersion) := {
-      scalaBinaryVersion.value match {
-        case "2.12" => "1.11.4"
-        case _      => "2.0.0-RC3"
-      }
-    },
-
     inThisBuild(List(
       homepage := Some(url("https://openapi-generator.tech")),
 
@@ -37,6 +29,14 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       )
     )),
 
+    sbtPlugin := true,
+    (pluginCrossBuild / sbtVersion) := {
+      scalaBinaryVersion.value match {
+        case "2.12" => "1.11.4"
+        case _      => "2.0.0-RC3"
+      }
+    },
+
     resolvers ++= Seq(
       Resolver.sbtPluginRepo("snapshots"),
     ),
@@ -52,4 +52,4 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     ),
 
     libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0"
-  ).enablePlugins(SbtPlugin)
+  )
