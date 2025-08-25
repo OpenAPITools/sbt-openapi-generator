@@ -12,7 +12,7 @@ lazy val scala21219 = "2.13.16"
 
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
 //crossScalaVersions := Nil
-//publish / skip := true // don't publish the root project
+publish / skip := true // don't publish the root project
 
 lazy val `sbt-openapi-generator` = (project in file("."))
   .settings(
@@ -36,7 +36,6 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     ),
     moduleName := "sbt-openapi-generator",
     crossScalaVersions := Seq(scala21220, scala21219),
-    crossSbtVersions := List("1.11.4"),
     sbtPlugin := true,
     scalacOptions ++= {
       scalaBinaryVersion.value match {
