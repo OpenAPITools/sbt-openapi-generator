@@ -11,7 +11,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
   .settings(
     moduleName := "sbt-openapi-generator",
     scalaVersion := "2.12.20",
-    crossScalaVersions := Seq(scalaVersion.value),
+    crossScalaVersions := Seq(scalaVersion.value, "2.11.12"),
     crossSbtVersions := List("1.11.4"),
     sbtPlugin := true,
 
