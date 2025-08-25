@@ -42,11 +42,8 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       Resolver.sbtPluginRepo("snapshots"),
     ),
 
-    resolvers += Resolver.url("bintray-sbt-plugins", url("http://dl.bintray.com/sbt/sbt-plugin-releases"))(Resolver.ivyStylePatterns)
-
 
     //version := "7.14.0",
-
 
     scmInfo := Some(
       ScmInfo(
