@@ -9,12 +9,27 @@ specifications as part of your build. Other tasks are available as command line 
 
 lazy val `sbt-openapi-generator` = (project in file("."))
   .settings(
-    scalaVersion := "2.12.15",
-    crossScalaVersions := Seq(scalaVersion.value, "2.11.12"),
+    scalaVersion := "2.12.20",
+    //crossScalaVersions := Seq(scalaVersion.value, "2.11.12"),
     crossSbtVersions := List("0.13.17", "1.3.10"),
     sbtPlugin := true,
 
-    publishMavenStyle := true,
+    inThisBuild(List(
+      homepage := Some(url("https://openapi-generator.tech")),
+
+      organization := "org.openapitools",
+      organizationName := "OpenAPI-Generator Contributors",
+      organizationHomepage := Some(url("https://github.com/OpenAPITools")),
+
+      licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
+
+      developers += Developer(
+        id = "openapitools",
+        name = "OpenAPI-Generator Contributors",
+        email = "team@openapitools.org",
+        url = url("https://github.com/OpenAPITools")
+      )
+    )),
 
     scriptedLaunchOpts := {
       scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
@@ -24,25 +39,10 @@ lazy val `sbt-openapi-generator` = (project in file("."))
 
     resolvers ++= Seq(
       Resolver.sbtPluginRepo("snapshots"),
-      Resolver.sonatypeRepo("snapshots")
     ),
 
-    version := "7.13.0",
+    //version := "7.14.0",
 
-    homepage := Some(url("https://openapi-generator.tech")),
-
-    organization := "org.openapitools",
-    organizationName := "OpenAPI-Generator Contributors",
-    organizationHomepage := Some(url("https://github.com/OpenAPITools")),
-
-    licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
-
-    developers += Developer(
-      id = "openapitools",
-      name = "OpenAPI-Generator Contributors",
-      email = "team@openapitools.org",
-      url = url("https://github.com/OpenAPITools")
-    ),
 
     scmInfo := Some(
       ScmInfo(
@@ -51,5 +51,5 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         devConnection = "scm:git:ssh://git@github.com:OpenAPITools/openapi-generator.git")
     ),
 
-    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.13.0"
+    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0"
   ).enablePlugins(SbtPlugin)
