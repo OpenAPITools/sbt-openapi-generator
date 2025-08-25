@@ -39,18 +39,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     moduleName := "sbt-openapi-generator",
     crossScalaVersions := Seq(scala212, scala3),
     sbtPlugin := true,
-    scalacOptions ++= {
-      scalaBinaryVersion.value match {
-        case "2.12" => "-Xsource:3" :: Nil
-        case _      => Nil
-      }
-    },
-    (pluginCrossBuild / sbtVersion) := {
-      scalaBinaryVersion.value match {
-        case "2.12" => "1.11.4"
-        case _      => "2.0.0-RC3"
-      }
-    },
+    
     libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0",
     addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.11.2")
   )
