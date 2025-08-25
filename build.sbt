@@ -33,7 +33,7 @@ onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
 crossScalaVersions := Nil
 //publish / skip := true // don't publish the root project
 
-lazy val plugin = (project in file("."))
+lazy val `sbt-openapi-generator` = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
     moduleName := "sbt-openapi-generator",
