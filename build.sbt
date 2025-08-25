@@ -38,6 +38,18 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     crossScalaVersions := Seq(scala212, scala3),
     crossSbtVersions := List("1.11.4"),
     sbtPlugin := true,
+    scalacOptions ++= {
+      scalaBinaryVersion.value match {
+        case "2.12" => "-Xsource:3" :: Nil
+        case _      => Nil
+      }
+    },
+    (pluginCrossBuild / sbtVersion) := {
+      scalaBinaryVersion.value match {
+        case "2.12" => "1.5.8"
+        case _      => "2.0.0-RC3"
+      }
+    },
     scriptedLaunchOpts := {
       scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
     },
