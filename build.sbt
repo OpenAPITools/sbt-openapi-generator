@@ -17,7 +17,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     inThisBuild(List(
       homepage := Some(url("https://openapi-generator.tech")),
 
-      organization := "org.openapitools.sbt-openapi-generator",
+      organization := "org.openapitools",
       organizationName := "OpenAPI-Generator Contributors",
       organizationHomepage := Some(url("https://github.com/OpenAPITools")),
 
