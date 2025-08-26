@@ -8,9 +8,21 @@ A Sbt plugin to support the OpenAPI generator project.
 
 Add to your `project/plugins.sbt`:
 
+For new versions (7.14.0 or later), please use
+
 ```sbt
-addSbtPlugin("org.openapitools" % "sbt-openapi-generator" % "7.15.0")
+addSbtPugin("org.openapitools: % "sbt-openapi-generator_2.12_1.0" % "7.15.0")
 ```
+
+Ref: https://central.sonatype.com/artifact/org.openapitools/sbt-openapi-generator_2.12_1.0
+
+For old versions (e.g. 7.13.0), please use
+
+```sbt
+addSbtPlugin("org.openapitools" % "sbt-openapi-generator" % "7.13.0")
+```
+
+Ref: https://central.sonatype.com/artifact/org.openapitools/sbt-openapi-generator
 
 # Configuration
 
