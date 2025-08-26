@@ -7,37 +7,37 @@ This gives you the ability to generate client SDKs, documentation, new generator
 specifications as part of your build. Other tasks are available as command line tasks.
 """
 
-lazy val scala212 = "2.12.20"
-lazy val scala3 = "3.7.2"
-
-inThisBuild(
-  List(
-    homepage := Some(url("https://openapi-generator.tech")),
-
-    organization := "org.openapitools",
-    organizationName := "OpenAPI-Generator Contributors",
-    organizationHomepage := Some(url("https://github.com/OpenAPITools")),
-
-    licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
-
-    developers += Developer(
-      id = "openapitools",
-      name = "OpenAPI-Generator Contributors",
-      email = "team@openapitools.org",
-      url = url("https://github.com/OpenAPITools")
-    )
-  )
-)
+lazy val scala21220 = "2.12.20"
+lazy val scala372 = "3.7.2"
 
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
-crossScalaVersions := Nil
+//crossScalaVersions := Nil
 //publish / skip := true // don't publish the root project
 
-lazy val plugin = (project in file("."))
-  .enablePlugins(SbtPlugin)
+lazy val `sbt-openapi-generator` = (project in file("."))
   .settings(
+    inThisBuild(
+      List(
+        homepage := Some(url("https://openapi-generator.tech")),
+
+        organization := "org.openapitools",
+        organizationName := "OpenAPI-Generator Contributors",
+        organizationHomepage := Some(url("https://github.com/OpenAPITools")),
+
+        licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
+
+        developers += Developer(
+          id = "openapitools",
+          name = "OpenAPI-Generator Contributors",
+          email = "team@openapitools.org",
+          url = url("https://github.com/OpenAPITools")
+        )
+      )
+    ),
     moduleName := "sbt-openapi-generator",
-    crossScalaVersions := Seq(scala212, scala3),
+    crossScalaVersions := Seq(scala21220),
+    //crossScalaVersions := Seq(scala21220, scala372),
+    sbtPlugin := true,
     scalacOptions ++= {
       scalaBinaryVersion.value match {
         case "2.12" => "-Xsource:3" :: Nil
@@ -50,6 +50,16 @@ lazy val plugin = (project in file("."))
         case _      => "2.0.0-RC3"
       }
     },
+    scriptedLaunchOpts := {
+      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
+    },
+
+    scriptedBufferLog := false,
+
+    resolvers ++= Seq(
+      Resolver.sbtPluginRepo("snapshots"),
+    ),
+
+
     libraryDependencies += "org.openapitools" % "openapi-generator" % "7.14.0",
-    addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.11.2")
-  )
+  ).enablePlugins(SbtPlugin)
