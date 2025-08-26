@@ -1,7 +1,5 @@
 # sbt-openapi-generator
 
-![Scala CI](https://github.com/openAPITools/sbt-openapi-generator/workflows/Scala%20CI/badge.svg?branch=master)
-
 A Sbt plugin to support the OpenAPI generator project.
 
 # Usage
@@ -11,7 +9,7 @@ Add to your `project/plugins.sbt`:
 For new versions (7.14.0 or later), please use
 
 ```sbt
-addSbtPugin("org.openapitools: % "sbt-openapi-generator_2.12_1.0" % "7.15.0")
+addSbtPugin("org.openapitools" % "sbt-openapi-generator_2.12_1.0" % "7.15.0")
 ```
 
 Ref: https://central.sonatype.com/artifact/org.openapitools/sbt-openapi-generator_2.12_1.0
