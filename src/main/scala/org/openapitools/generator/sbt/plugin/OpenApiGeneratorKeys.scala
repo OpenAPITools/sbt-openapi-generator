@@ -17,11 +17,12 @@
 
 package org.openapitools.generator.sbt.plugin
 
-import org.openapitools.codegen.CodegenConstants
+import org.openapitools.codegen.{ClientOptInput, CodegenConstants}
 import sbt.{File, settingKey, taskKey}
 
 trait OpenApiGeneratorKeys {
   final val openApiGenerate = taskKey[Seq[File]]("Generate code via Open API Tools Generator for Open API 2.0 or 3.x specification documents.")
+  final val openApiGenerateInputs = taskKey[Option[ClientOptInput]]("Generates the user-provided config in a format that can be fed to a org.openapitools.codegen.Generator")
   final val openApiGenerators = taskKey[Unit]("Print list of available generators")
 
   final val openApiInputSpec = settingKey[String]("The Open API 2.0/3.x specification location.")
