@@ -9,7 +9,7 @@ Add to your `project/plugins.sbt`:
 For new versions (7.14.0 or later), please use
 
 ```sbt
-addSbtPugin("org.openapitools" % "sbt-openapi-generator_2.12_1.0" % "7.19.0")
+addSbtPlugin("org.openapitools" % "sbt-openapi-generator_2.12_1.0" % "7.19.0")
 ```
 
 Ref: https://central.sonatype.com/artifact/org.openapitools/sbt-openapi-generator_2.12_1.0
