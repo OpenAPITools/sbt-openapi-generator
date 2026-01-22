@@ -17,14 +17,15 @@
 
 package org.openapitools.generator.sbt.plugin
 
-import org.openapitools.generator.sbt.plugin.tasks.{OpenApiGenerateTask, OpenApiGeneratorsTask}
+import org.openapitools.generator.sbt.plugin.tasks.{OpenApiGenerateInputsTask, OpenApiGenerateTask, OpenApiGeneratorsTask}
 import sbt.Keys.aggregate
 import sbt.plugins.JvmPlugin
 import sbt.{Def, File, config, taskKey}
 
 object OpenApiGeneratorPlugin extends sbt.AutoPlugin
   with OpenApiGeneratorsTask
-  with OpenApiGenerateTask {
+  with OpenApiGenerateTask
+  with OpenApiGenerateInputsTask {
   self =>
 
   override def requires: JvmPlugin.type = sbt.plugins.JvmPlugin
@@ -100,7 +101,8 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
 
   override lazy val projectSettings: Seq[Def.Setting[?]] = Seq[sbt.Setting[?]](
     openApiGenerators := openApiGeneratorsTask.value,
-    openApiGenerate := openApiGenerateTask.value
+    openApiGenerate := openApiGenerateTask.value,
+    openApiGenerateInputs := openApiGenerateInputsTask.value
   ) ++ baseSettings
 
 }
