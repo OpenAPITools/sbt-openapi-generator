@@ -7,7 +7,7 @@ A Sbt plugin to support the OpenAPI generator project.
 Add to your `project/plugins.sbt`:
 
 ```sbt
-addSbtPlugin("org.openapitools" % "sbt-openapi-generator" % "7.20.0")
+addSbtPlugin("org.openapitools" % "sbt-openapi-generator" % "7.21.0")
 ```
 
 # Configuration
