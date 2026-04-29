@@ -24,7 +24,10 @@ lazy val `sbt-openapi-generator` = (project in file("."))
         organizationName := "OpenAPI-Generator Contributors",
         organizationHomepage := Some(url("https://github.com/OpenAPITools")),
 
-        licenses += ("The Apache Software License, Version 2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
+        licenses += (
+          "The Apache Software License, Version 2.0",
+          url("https://www.apache.org/licenses/LICENSE-2.0.txt")
+        ),
 
         developers += Developer(
           id = "openapitools",
@@ -36,7 +39,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     ),
     moduleName := "sbt-openapi-generator",
     crossScalaVersions := Seq(scala21220),
-    //crossScalaVersions := Seq(scala21220, scala372),
+    // crossScalaVersions := Seq(scala21220, scala372),
     sbtPlugin := true,
     scalacOptions ++= {
       scalaBinaryVersion.value match {
@@ -46,20 +49,24 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     },
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
-        case "2.12" => "1.5.8"
-        case _      => "2.0.0-RC3"
+        case "2.12" => "1.12.10"
+        case _      => "2.0.0-RC12"
       }
     },
     scriptedLaunchOpts := {
-      scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-server", "-Dplugin.version=" + version.value)
+      scriptedLaunchOpts.value ++ Seq(
+        "-Xmx1024M",
+        "-server",
+        "-Dplugin.version=" + version.value
+      )
     },
 
     scriptedBufferLog := false,
 
     resolvers ++= Seq(
-      Resolver.sbtPluginRepo("snapshots"),
+      Resolver.sbtPluginRepo("snapshots")
     ),
 
-
-    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.22.0",
-  ).enablePlugins(SbtPlugin)
+    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.22.0"
+  )
+  .enablePlugins(SbtPlugin)
