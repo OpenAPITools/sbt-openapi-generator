@@ -8,7 +8,7 @@ specifications as part of your build. Other tasks are available as command line 
 """
 
 lazy val scala21220 = "2.12.20"
-lazy val scala372 = "3.7.2"
+lazy val scala384 = "3.8.4"
 
 onLoadMessage := s"Welcome to sbt-openapi-generator ${version.value}"
 //crossScalaVersions := Nil
@@ -38,19 +38,19 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       )
     ),
     moduleName := "sbt-openapi-generator",
-    crossScalaVersions := Seq(scala21220),
-    // crossScalaVersions := Seq(scala21220, scala372),
+    // crossScalaVersions := Seq(scala21220),
+    crossScalaVersions := Seq(scala21220, scala384),
     sbtPlugin := true,
     scalacOptions ++= {
       scalaBinaryVersion.value match {
-        case "2.12" => "-Xsource:3" :: Nil
-        case _      => Nil
+        case "2.12" => Seq("-Xsource:3", "-release:11")
+        case _      => Seq("-release:17")
       }
     },
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
-        case "2.12" => "1.12.10"
-        case _      => "2.0.0-RC12"
+        case "2.12" => "1.12.11"
+        case _      => "2.0.0-RC15"
       }
     },
     scriptedLaunchOpts := {
