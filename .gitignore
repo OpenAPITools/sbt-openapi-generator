@@ -158,3 +158,4 @@ project/plugins/project/
 .vscode
 metals.sbt
 .bloop
+.scala-build/

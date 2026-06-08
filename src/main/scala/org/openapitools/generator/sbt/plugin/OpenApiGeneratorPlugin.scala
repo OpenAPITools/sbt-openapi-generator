@@ -17,14 +17,19 @@
 
 package org.openapitools.generator.sbt.plugin
 
-import org.openapitools.generator.sbt.plugin.tasks.{OpenApiGenerateTask, OpenApiGeneratorsTask}
+import org.openapitools.generator.sbt.plugin.tasks.OpenApiGenerateTask
+import org.openapitools.generator.sbt.plugin.tasks.OpenApiGeneratorsTask
+import sbt.Def
+import sbt.File
 import sbt.Keys.aggregate
+import sbt.config
 import sbt.plugins.JvmPlugin
-import sbt.{Def, File, config, taskKey}
+import sbt.taskKey
 
-object OpenApiGeneratorPlugin extends sbt.AutoPlugin
-  with OpenApiGeneratorsTask
-  with OpenApiGenerateTask {
+object OpenApiGeneratorPlugin
+    extends sbt.AutoPlugin
+    with OpenApiGeneratorsTask
+    with OpenApiGenerateTask {
   self =>
 
   override def requires: JvmPlugin.type = sbt.plugins.JvmPlugin
@@ -37,7 +42,6 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
 
     def SettingDisabled: Option[Boolean] = Some(false)
 
-
   }
 
   val out = taskKey[Seq[File]]("Out")
@@ -45,7 +49,7 @@ object OpenApiGeneratorPlugin extends sbt.AutoPlugin
   val OpenApiCodegen = config("openApiCodegen")
 
   override def globalSettings: Seq[Def.Setting[?]] = Seq(
-    aggregate in openApiGenerators := false
+    openApiGenerators / aggregate := false
   )
 
   private lazy val baseSettings: Seq[sbt.Setting[?]] = Seq[sbt.Setting[?]](

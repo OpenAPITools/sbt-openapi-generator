@@ -21,11 +21,11 @@ import org.openapitools.codegen.meta.Stability
 import org.openapitools.codegen.{CodegenConfigLoader, CodegenType}
 import sbt.{Def, Task}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 trait OpenApiGeneratorsTask {
 
-  protected[this] def openApiGeneratorsTask: Def.Initialize[Task[Unit]] = Def.task {
+  protected def openApiGeneratorsTask: Def.Initialize[Task[Unit]] = Def.task {
     val generators = CodegenConfigLoader.getAll.asScala
     val types = CodegenType.values()
 
@@ -37,21 +37,21 @@ trait OpenApiGeneratorsTask {
 
     out ++= "The following generators are available:" + System.lineSeparator()
     for (t <- types) {
-      val filteredGenerators = generators.filter(_.getTag == t).sortBy(_.getName)
+      val filteredGenerators =
+        generators.filter(_.getTag == t).sortBy(_.getName)
       if (filteredGenerators.nonEmpty) {
         out ++= s" $t generators:" + System.lineSeparator()
-        filteredGenerators.foreach {
-          generator =>
-            val meta = generator.getGeneratorMetadata
-            val stability = meta.getStability
-            val include = stabilities.contains(stability)
-            if (include) {
-              out ++= s"    - ${generator.getName}"
-              if (stability != Stability.STABLE) {
-                out ++= s" (${stability.value()})"
-              }
-              out ++= System.lineSeparator()
+        filteredGenerators.foreach { generator =>
+          val meta = generator.getGeneratorMetadata
+          val stability = meta.getStability
+          val include = stabilities.contains(stability)
+          if (include) {
+            out ++= s"    - ${generator.getName}"
+            if (stability != Stability.STABLE) {
+              out ++= s" (${stability.value()})"
             }
+            out ++= System.lineSeparator()
+          }
         }
       }
     }
