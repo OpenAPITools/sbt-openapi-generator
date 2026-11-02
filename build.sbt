@@ -66,6 +66,6 @@ lazy val `sbt-openapi-generator` = (project in file("."))
       Resolver.sbtPluginRepo("snapshots")
     ),
 
-    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.26.0"
+    libraryDependencies += "org.openapitools" % "openapi-generator" % "7.27.0"
   )
   .enablePlugins(SbtPlugin)
