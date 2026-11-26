@@ -49,7 +49,7 @@ lazy val `sbt-openapi-generator` = (project in file("."))
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
         case "2.12" => "1.13.1"
-        case _      => "2.1.0"
+        case _      => "2.1.1"
       }
     },
     scriptedLaunchOpts := {
